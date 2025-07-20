@@ -42,7 +42,7 @@ const  Sidebar = () => {
        <li><NavLink to="/addTransaction">Add transaction</NavLink></li>  
        <li><NavLink to="/transactionHistory">Transaction history </NavLink></li>    
        <li><NavLink to="#"> </NavLink></li>
-       <button onClick={logoutHandler}>Sign-out</button>
+       <button  className={styles.signOut} onClick={logoutHandler}>Sign-out</button>
      </ul>
    </div>
       

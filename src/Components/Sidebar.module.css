@@ -5,6 +5,9 @@
   position: fixed;
   z-index: 1000;
 }
+.sidebar:hover{
+  background-color: #4caf50;
+}
 
 .SidebarContainer {
   width: 250px;
@@ -68,7 +71,7 @@
   color: #ffffff;
 }
 
-button {
+.signOut {
   background-color: transparent;
   border: 1px solid #4caf50;
   color: #4caf50;
@@ -76,13 +79,13 @@ button {
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.3s, color 0.3s;
-  margin-top: 90%;
+  margin-top: 96%;
 }
 
-button:hover {
-  background-color: #4caf50;
+ .signOut:hover{
+ background-color: #4caf50;
   color: #ffffff;
-}
+ }
 .hamburger{
   margin: 10px 20px ;
 }
