@@ -1,0 +1,131 @@
+.historyContainer {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 30px;
+  background-color: #f8f9fa;
+  border-radius: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.historyTitle {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 30px;
+}
+
+.transactionList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.transactionItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 15px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  flex-wrap: wrap;
+}
+
+.transactionItem:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.transactionInfo {
+  flex: 1;
+  min-width: 200px;
+}
+
+.transactionTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0 0 5px 0;
+}
+
+.transactionCategory {
+  font-size: 0.9rem;
+  color: #718096;
+  margin: 0;
+}
+
+.transactionDetails {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.amount {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.income {
+  color: #22c55e; /* Green */
+}
+
+.expense {
+  color: #ef4444; /* Red */
+}
+
+.transactionDate {
+  font-size: 0.9rem;
+  color: #a0aec0;
+}
+
+.typeBadge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.incomeBadge {
+  background-color: #22c55e;
+}
+
+.expenseBadge {
+  background-color: #ef4444;
+}
+
+.loadingText,
+.emptyState {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #718096;
+  padding: 40px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .historyContainer {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  .transactionItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .transactionDetails {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .amount {
+    font-size: 1.1rem;
+  }
+}

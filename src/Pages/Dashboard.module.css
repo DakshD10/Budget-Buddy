@@ -1,0 +1,185 @@
+.dashboardContainer {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f0f2f5;
+  padding: 20px;
+  color: #333;
+  min-height: 100vh;
+}
+
+.dashboardHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.dashboardGreeting {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #1a202c;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.dashboardDatetime {
+  font-size: 0.9rem;
+  color: #718096;
+}
+
+.summaryCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.summaryCard {
+  color: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.summaryCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.balanceCard {
+  background: linear-gradient(45deg, #3b82f6, #60a5fa);
+}
+
+.incomeCard {
+  background: linear-gradient(45deg, #16a34a, #4ade80);
+}
+
+.expenseCard {
+  background: linear-gradient(45deg, #ef4444, #f87171);
+}
+
+.cardTitle {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 10px;
+}
+
+.cardValue {
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.chartsSection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.chartBox {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chartBox h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #2d3748;
+}
+
+.recentTransactions {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.sectionTitle {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #2d3748;
+}
+
+.recentTransactions ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.recentTransactions li {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0;
+  border-bottom: 1px solid #edf2f7;
+  font-size: 1rem;
+}
+
+.recentTransactions li:last-child {
+  border-bottom: none;
+}
+
+@media (max-width: 1024px) {
+  .dashboardContainer {
+    padding: 15px;
+  }
+
+  .chartsSection {
+    grid-template-columns: 1fr;
+  }
+
+  .chartBox {
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  .chartBox > div {
+      width: 100% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboardHeader {
+    gap: 5px;
+  }
+
+  .dashboardGreeting {
+    font-size: 1.5rem;
+  }
+
+  .summaryCards {
+    grid-template-columns: 1fr;
+  }
+
+  .cardValue {
+    font-size: 1.8rem;
+  }
+
+  .chartsSection {
+    gap: 15px;
+  }
+
+  .chartBox {
+    padding: 15px;
+  }
+
+  .recentTransactions {
+    padding: 20px;
+  }
+
+  .recentTransactions li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+}
