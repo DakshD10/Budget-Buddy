@@ -1,9 +1,9 @@
 .sidebar{
-  height: 30px;
-  width: 30px;
+  height: 10px;
+  width: 10px;
   color: black;
   position: fixed;
- margin-left: 20px;
+  z-index: 1000;
 }
 
 .SidebarContainer {
@@ -76,12 +76,15 @@ button {
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.3s, color 0.3s;
-  margin-top: 50%;
+  margin-top: auto;
 }
 
 button:hover {
   background-color: #4caf50;
   color: #ffffff;
+}
+.hamburger{
+  margin: 10px 20px ;
 }
 
 

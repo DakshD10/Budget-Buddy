@@ -51,7 +51,7 @@ const  Sidebar = () => {
 
   return (
     <div className={styles.sidebar}>
-      <Button onClick={toggleDrawer(true)}><Menu></Menu></Button>
+      <Button onClick={toggleDrawer(true)}><Menu/></Button>
       <Drawer open={open} onClose={toggleDrawer(false)}>
         {DrawerList}
       </Drawer>
