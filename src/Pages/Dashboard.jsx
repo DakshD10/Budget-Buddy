@@ -1,17 +1,44 @@
 import { useEffect } from "react";
 import { useAuth } from "../Authentication/AuthContext";
 import styles from "./Dashboard.module.css";
-import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, Tooltip, LineChart, Line, CartesianGrid, Legend } from 'recharts';
-import { Income, Expense, Balance, PieData, MonthlyData, RecentTransactions } from "../Features/Transaction/txnData";
-import { useSelector, useDispatch } from 'react-redux';
+import {
+  PieChart,
+  Pie,
+  Cell,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  LineChart,
+  Line,
+  CartesianGrid,
+  Legend,
+} from "recharts";
+import {
+  Income,
+  Expense,
+  Balance,
+  PieData,
+  MonthlyData,
+  RecentTransactions,
+} from "../Features/Transaction/txnData";
+import { useSelector, useDispatch } from "react-redux";
 import { fetchTransactions } from "../Features/Transaction/AddTransSlice";
 import Spinner from "../Components/Spinner";
+
+
+const CATEGORY_COLORS = {
+  income: "#22c55e",  
+         
+  "Uncategorized": "#dd490fff",
+};
+
 
 const Dashboard = () => {
   const { user } = useAuth();
   const dispatch = useDispatch();
   const status = useSelector((state) => state.transactions.status);
-
   const balance = useSelector(Balance);
   const expense = useSelector(Expense);
   const income = useSelector(Income);
@@ -20,25 +47,24 @@ const Dashboard = () => {
   const recentTxn = useSelector(RecentTransactions);
 
   useEffect(() => {
-    if (user && status === 'idle') {
+    if (user && status === "idle") {
       dispatch(fetchTransactions(user.uid));
     }
   }, [user, status, dispatch]);
 
-  const COLORS = ["#4ade80", "#f87171"];
-  
-  if (status === 'loading' || status === 'idle') {
-    return <div><Spinner/></div>;
+  if (status === "loading" || status === "idle") {
+    return (
+      <div>
+        <Spinner />
+      </div>
+    );
   }
 
   return (
     <div className={styles.dashboardContainer}>
-      
       <header className={styles.dashboardHeader}>
         <h1 className={styles.dashboardGreeting}>Welcome {user.displayName}</h1>
-        <p className={styles.dashboardDatetime}>
-          {new Date().toLocaleString()}
-        </p>
+        <p className={styles.dashboardDatetime}>{new Date().toLocaleString()}</p>
       </header>
 
       <section className={styles.summaryCards}>
@@ -59,14 +85,21 @@ const Dashboard = () => {
       <section className={styles.chartsSection}>
         <div className={styles.chartBox}>
           <h3>Expense Breakdown</h3>
-          <PieChart width={300} height={250}>
-            <Pie data={piedata} dataKey="value" nameKey="name" outerRadius={100} label>
-              {piedata.map((entry, index) => (
-                <Cell key={`cell-${entry.name}`} fill={COLORS[index]} />
-              ))}
-            </Pie>
-            <Tooltip />
-          </PieChart>
+         <PieChart width={400} height={270}>
+  <Pie data={piedata} dataKey="value" nameKey="name" outerRadius={100} label>
+    {piedata.map((entry) => (
+        <Cell
+          key={`cell-${entry.type}-${entry.categoryName}`}
+          fill={
+            entry.type === 'income'
+              ? CATEGORY_COLORS.income
+              : CATEGORY_COLORS[entry.categoryName] || CATEGORY_COLORS.Uncategorized
+          }
+        />
+    ))}
+  </Pie>
+  <Tooltip />
+</PieChart>
         </div>
 
         <div className={styles.chartBox}>
@@ -98,7 +131,7 @@ const Dashboard = () => {
       <section className={styles.recentTransactions}>
         <h3 className={styles.sectionTitle}>Recent Transactions</h3>
         <ul>
-          {recentTxn.map(txn => (
+          {recentTxn.map((txn) => (
             <li key={txn.id}>
               {txn.title} - ₹{txn.amount} ({txn.type})
             </li>

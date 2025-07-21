@@ -1,53 +1,12 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useAuth } from "../Authentication/AuthContext"
-import { addTransaction } from "../Features/Transaction/AddTransSlice"; 
 import styles from "./AddTransaction.module.css";
+import { UseTxnLogic } from "../Components/UseTxnLogic";
 
 const AddTransaction = () => {
-  const dispatch = useDispatch();
-  const { user } = useAuth(); 
-
-  const [formData, setFormData] = useState({
-    title: "",
-    amount: "",
-    category: "",
-    type: "income",
-    date: "",
-  });
-
-  const handleChange = (e) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (!user?.uid) {
-      alert("Please login first.");
-      return;
-    }
-
-    const transaction = {
-      ...formData,
-      amount: parseFloat(formData.amount),
-      createdAt: new Date().toISOString(),
-    };
-
-    dispatch(addTransaction({ uid: user.uid, transaction }));
-
-    
-    setFormData({
-      title: "",
-      amount: "",
-      category: "",
-      type: "income",
-      date: "",
-    });
-  };
+  const {
+    formData,
+    handleChange,
+    handleSubmit,
+  } = UseTxnLogic();
 
   return (
     <form onSubmit={handleSubmit} className={styles.formContainer}>
@@ -89,7 +48,6 @@ const AddTransaction = () => {
           required
           className={styles.formSelect}
         >
-          <option value="">Select Type</option>
           <option value="income">Income</option>
           <option value="expense">Expense</option>
         </select>
@@ -103,6 +61,8 @@ const AddTransaction = () => {
           name="category"
           value={formData.category}
           onChange={handleChange}
+          placeholder={`Enter ${formData.type} category`}
+          required
           className={styles.formInput}
         />
       </div>

@@ -11,9 +11,14 @@ const EditTransaction = ({ transaction, onClose, uid }) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
- const handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(UpdateTransaction({ uid, transactionid: transaction.id, updatedData: form }))
+    // Ensure amount is a number before dispatching
+    const updatedData = {
+      ...form,
+      amount: parseFloat(form.amount) || 0,
+    };
+    dispatch(UpdateTransaction({ uid, transactionid: transaction.id, updatedData }))
       .then(() => {
         dispatch(fetchTransactions(uid)); 
         onClose();
@@ -25,14 +30,43 @@ const EditTransaction = ({ transaction, onClose, uid }) => {
       <div className={styles.modalContent}>
         <h2>Edit Transaction</h2>
         <form onSubmit={handleSubmit}>
-          <input name="title" value={form.title} onChange={handleChange} required placeholder="Title" />
-          <input name="amount" value={form.amount} onChange={handleChange} required placeholder="Amount" type="number" />
-          <input name="category" value={form.category} onChange={handleChange} required placeholder="Category" />
-          <select name="type" value={form.type} onChange={handleChange}>
+          <input 
+            name="title" 
+            value={form.title || ''} 
+            onChange={handleChange} 
+            required 
+            placeholder="Title" 
+          />
+          <input 
+            name="amount" 
+            value={form.amount || ''} 
+            onChange={handleChange} 
+            required 
+            placeholder="Amount" 
+            type="number" 
+          />
+          <input 
+            name="category" 
+            value={form.category || ''} 
+            onChange={handleChange} 
+            required 
+            placeholder="Category" 
+          />
+          <select 
+            name="type" 
+            value={form.type || 'expense'} 
+            onChange={handleChange}
+          >
             <option value="income">Income</option>
             <option value="expense">Expense</option>
           </select>
-          <input name="date" value={form.date} onChange={handleChange} required type="date" />
+          <input 
+            name="date" 
+            value={form.date || ''} 
+            onChange={handleChange} 
+            required 
+            type="date" 
+          />
           <button type="submit">Update</button>
           <button type="button" onClick={onClose}>Cancel</button>
         </form>

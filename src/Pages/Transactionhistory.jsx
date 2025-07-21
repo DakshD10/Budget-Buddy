@@ -26,10 +26,13 @@ const [editingTxn, setEditingTxn] = useState(null);
   }, [user, dispatch]);
 
   const handleDelete = (transactonid) => {
-    if (user?.uid && transactonid) {
-      dispatch(DeleteTransaction({ uid: user.uid, transactonid }));
-    }
-  };
+  if (user?.uid && transactonid) {
+    dispatch(DeleteTransaction({ uid: user.uid, transactonid }))
+      .then(() => {
+        dispatch(fetchTransactions(user.uid));
+      });
+  }
+};
 
   return (
     <div className={styles.historyContainer}>
@@ -70,10 +73,8 @@ const [editingTxn, setEditingTxn] = useState(null);
                   >
                     {txn.type}
                   </span>
-                  <button onClick={() => setEditingTxn(txn)}><FaEdit /></button>
-                  <button onClick={() => handleDelete(txn.id)}>
-                    <MdDelete />
-                  </button>
+                 <button onClick={() => setEditingTxn(txn)} aria-label="Edit Transaction"><FaEdit /></button>
+<button onClick={() => handleDelete(txn.id)} aria-label="Delete Transaction"><MdDelete /></button>
                 </div>
               </li>
             ))
