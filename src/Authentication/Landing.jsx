@@ -36,7 +36,6 @@ const LandingPage =  () => {
         <section className={styles.hero}>
           <div className={styles.container}>
             <h1>Take Control of Your Financial Future</h1>
-            <p>Track expenses,  and achieve your financial goals with our intelligent money management platform. Simple, secure, and designed for your success.</p>
             <Link className={styles.ctaButton} to="/login" >
               Get Started 
             </Link>
