@@ -25,7 +25,6 @@ export const UseTxnLogic = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     if (name === "type") {
       dispatch({ type: "UPDATE_FIELD", payload: { name, value } });
       dispatch({ type: "UPDATE_FIELD", payload: { name: "category", value: "" } });

@@ -41,7 +41,6 @@ const  Sidebar = () => {
       <li><NavLink to="/dashboard" >Dashboard</NavLink></li>
        <li><NavLink to="/addTransaction">Add transaction</NavLink></li>  
        <li><NavLink to="/transactionHistory">Transaction history </NavLink></li>    
-       
        <button  className={styles.signOut} onClick={logoutHandler}>Sign-out</button>
      </ul>
    </div>

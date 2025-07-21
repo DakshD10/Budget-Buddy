@@ -23,7 +23,7 @@ export const Balance = createSelector(
   (income, expense) => income - expense
 );
 
-// MODIFIED SELECTOR
+
 export const PieData = createSelector(
   [selectTxnList],
   (transactions) => {

@@ -13,7 +13,7 @@ const EditTransaction = ({ transaction, onClose, uid }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Ensure amount is a number before dispatching
+    
     const updatedData = {
       ...form,
       amount: parseFloat(form.amount) || 0,

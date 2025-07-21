@@ -73,10 +73,10 @@ const Login = () => {
 
       <button
         className={styles.googleBtn}
-        onClick={googleSignInHandler}
-      >
+        onClick={googleSignInHandler}>
         <FaGoogle />
       </button>
+<Link to="/forgot-password" className={styles.signupLink}>Forgot Password?</Link>
 
       <Link to={"/signup"} className={styles.signupLink}>Sign-up</Link>
 
