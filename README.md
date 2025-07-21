@@ -5,7 +5,7 @@
 Budget Buddy is a simple and powerful personal finance tracker that helps you manage your income and expenses in real time. Built using **React**, **Redux**, **Firebase**, and **Recharts**, it offers intuitive visualizations and seamless user experience.
 
 ## ✨ Features
-- 🔐 Firebase Authentication (Sign Up / Login / Logout)
+- 🔐 Firebase Authentication (Sign Up / Login / Logout/ Forgot password)
 - 📊 Track income and expenses separately
 - 💼 Add custom transactions with amount and category
 - 📁 Cloud Firestore for real-time data sync
