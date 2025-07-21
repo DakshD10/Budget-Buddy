@@ -13,11 +13,6 @@ const EditTransaction = ({ transaction, onClose, uid }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-<<<<<<< HEAD
-    
-=======
-   
->>>>>>> 16a14ce868f511b36648ed3a9dd18589ad8011fa
     const updatedData = {
       ...form,
       amount: parseFloat(form.amount) || 0,
